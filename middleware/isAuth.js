@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const url = require('url');
+const {SOME_RANDOM_SECRET} = require("../utils/constants");
 
 const isAuth = function(req, res,next){
     const token = url.parse(req.url,true).query.token;
@@ -7,7 +8,7 @@ const isAuth = function(req, res,next){
     let decodedToken = "";
     try{
         // the random secret should ideally be gotten from database 
-        decodedToken = jwt.verify(token, "somerandomsecret");
+        decodedToken = jwt.verify(token, SOME_RANDOM_SECRET);
     }catch(err){
         console.log("Problem decoding token!");
         err.statuscode = 500;

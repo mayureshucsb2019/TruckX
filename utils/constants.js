@@ -1,0 +1,7 @@
+const ALARM_PER_PAGE = 10;
+const VIDEO_PER_PAGE = 5;
+const SOME_RANDOM_SECRET = "somerandomsecret";
+
+exports.ALARM_PER_PAGE = ALARM_PER_PAGE;
+exports.VIDEO_PER_PAGE = VIDEO_PER_PAGE;
+exports.SOME_RANDOM_SECRET = SOME_RANDOM_SECRET;

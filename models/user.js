@@ -1,7 +1,3 @@
-/*
-    Secret stored in this schema must be the hashed token for the original token.
-*/
-
 const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
     imei:{
@@ -11,7 +7,7 @@ const userSchema = new mongoose.Schema({
     },
     secret:{
         type: String,
-        required: true,
+        default: "secret",
     }
 });
 
