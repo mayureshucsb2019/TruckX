@@ -21,11 +21,20 @@ const checkLogin = function(req, res){
             user.secret = token;
             console.log("user is:",user);
             user.save()
-            .then( ()=> console.log("secret data updated"))
-            .catch(() => console.log("secret not updated"));
-    }).catch(`Unable to find the user for given imei: ${imei}`);
+            .then( ()=> {
+                console.log("secret data updated")
+                res.status(200).send({token: token, imei: imei});
+            })
+            .catch(() => {
+                console.log("secret not updated");
+                res.status(400).send(err)
+            });
+    }).catch(err => {
+        console.log(`Unable to find the user for given imei: ${imei}`);
+        res.status(400).send(err)
+    });
     // this token can be sent back and forth and must be verified for all API calls
-    res.status(200).send({token: token, imei: imei});
+    
 }
 
 const postAlarm =  function(req, res){
